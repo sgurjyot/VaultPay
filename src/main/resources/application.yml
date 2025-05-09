@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/vaultpay
+    url: jdbc:postgresql://webserver:5432/vaultpay
     username: vaultuser
     password: vaultpass
   jpa:
@@ -12,3 +12,6 @@ spring:
         format_sql: true
   application:
     name: vaultpay
+
+server:
+  port: 8080
