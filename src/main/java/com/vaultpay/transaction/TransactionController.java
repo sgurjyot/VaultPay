@@ -7,6 +7,8 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/transactions")
 @RequiredArgsConstructor
@@ -37,4 +39,13 @@ public class TransactionController {
     ) {
         return ResponseEntity.ok(transactionService.transfer(request, user.getUsername()));
     }
+
+    @GetMapping("/{accountNumber}")
+    public ResponseEntity<List<TransactionResponse>> getTransactionHistory(
+            @PathVariable String accountNumber,
+            @AuthenticationPrincipal UserDetails user
+    ) {
+        return ResponseEntity.ok(transactionService.getTransactionHistory(accountNumber, user.getUsername()));
+    }
+
 }
