@@ -1,0 +1,25 @@
+type Query {
+    myAccounts: [BankAccount!]!
+    accountTransactions(accountNumber: String!): [Transaction!]!
+}
+
+type BankAccount {
+    accountNumber: String!
+    balance: Float!
+    createdAt: String!
+}
+
+type Transaction {
+    type: TransactionType!
+    amount: Float!
+    fromAccount: String
+    toAccount: String
+    description: String
+    timestamp: String
+}
+
+enum TransactionType {
+    DEPOSIT
+    WITHDRAW
+    TRANSFER
+}

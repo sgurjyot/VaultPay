@@ -107,7 +107,9 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
+			<version>1.18.30</version>
 			<scope>provided</scope>	<!-- Changed from value: annotationProcessor -->
+			<optional>true</optional> <!-- Recommended for Lombok -->
 		</dependency>
 
 		<!-- Spring GraphQL -->
@@ -118,8 +120,8 @@
 		<dependency>
 			<groupId>com.graphql-java</groupId>
 			<artifactId>graphql-java-extended-scalars</artifactId>
+			<version>21.0</version>
 		</dependency>
-
 	</dependencies>
 
 	<build>
@@ -128,6 +130,20 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+
+			<!-- exec plugin -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>3.1.0</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>java</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
