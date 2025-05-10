@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -123,4 +124,16 @@ public class TransactionService {
                 .timestamp(t.getTimestamp())
                 .build();
     }
+
+    public List<TransactionResponse> getTransactionHistory(String accountNumber, String userEmail) {
+        User user = getUser(userEmail);
+        BankAccount account = getUserAccount(accountNumber, user);
+
+        return transactionRepository
+                .findAllByFromAccountOrToAccount(account, account)
+                .stream()
+                .map(this::mapToResponse)
+                .toList();
+    }
+
 }
