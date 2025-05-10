@@ -122,6 +122,13 @@
 			<artifactId>graphql-java-extended-scalars</artifactId>
 			<version>21.0</version>
 		</dependency>
+
+		<!-- Logstash Logback Encoder -->
+		<dependency>
+			<groupId>net.logstash.logback</groupId>
+			<artifactId>logstash-logback-encoder</artifactId>
+			<version>7.4</version>
+		</dependency>
 	</dependencies>
 
 	<build>
